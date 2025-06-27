@@ -1,21 +1,32 @@
 const userInput = document.getElementById("userInput");
 const btn = document.getElementById("btn");
+const resetBtn = document.getElementById("reset");
 const para = document.getElementById("para");
 
-const number = Math.floor(Math.random() * 100) + 1;
-
-
+let number = Math.floor(Math.random() * 100) + 1;
+let guessCount = 0;
 
 btn.addEventListener("click", function() {
+
+  if(userInput.value.trim() === "") {
+    para.textContent = "please enter a number.."
+    return;
+  };
   
   const userGuess = Number(userInput.value);
 
   if(userGuess === number) {
-    para.textContent = "correct you guessed the right number!"
+    para.textContent = "you Guessed Correctly! Well Done!"
   } else if(userGuess < number) {
-    para.textContent = "your guess is too low try guessing higher"      
+    para.textContent = "your guess was too low try again :)"
   } else {
-    para.textContent = "your guess is too high try guessing a lower.."
-  }
+    para.textContent = "your guess was too high try again."
+  };
+});
 
+resetBtn.addEventListener("click", function() {
+
+  number = Math.floor(Math.random() * 100) + 1;
+  para.textContent = "guess my secret number good luck!";
+  userInput.value = "";
 });
