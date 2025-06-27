@@ -23,3 +23,7 @@ body {
   gap: 10px;
 }
 
+#userInput {
+  outline: none;
+}
+
